@@ -1,0 +1,123 @@
+/* ===============================
+   WRAPPER
+   =============================== */
+.aig-wrapper {
+    padding: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* ===============================
+   GRID CONTAINER
+   =============================== */
+.aig-grid {
+    display: grid;
+    gap: 8px;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    grid-auto-rows: auto; /* prevents collapse on Samsung */
+}
+
+/* ===============================
+   GRID CELLS
+   =============================== */
+.aig-cell {
+    text-align: center;
+    padding: 10px 6px;
+    /* border: 1px solid var(--aig-cell-border, #cccccc); */
+    border: 3px solid var(--aig-cell-border);
+    background: transparent;
+   /* background: var(--aig-cell-bg, #e0e0e0); */
+    border-radius: 10px;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    /* Prevent collapse on Samsung Chrome */
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+
+    /* Fix PNG rendering issues */
+    overflow: visible;
+    position: relative;
+}
+
+/* ===============================
+   ICON IMAGES (PNG-safe)
+   =============================== */
+.aig-cell img {
+    width: 64px;              /* fixed size = stable across all browsers */
+    height: 64px;             /* prevents WebView rasterisation bugs */
+    display: block;
+    margin: 0 auto;
+    flex-shrink: 0;
+
+    /* Fix delayed painting on Samsung WebView */
+    image-rendering: auto;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* ===============================
+   TEXT UNDER ICONS
+   =============================== */
+.aig-text {
+    margin-top: 8px;
+    font-family: var(--aig-font-family, Arial);
+    font-size: var(--aig-font-size, 16px);
+    font-weight: var(--aig-font-weight, normal);
+    color: var(--aig-text-color, #000000);
+    line-height: 1.2;
+    text-align: center;
+}
+
+/* ===============================
+   SPECIAL CELL (RETURN)
+   =============================== */
+.aig-return {
+    border-color: #0073aa;
+    background: #d9edf7;
+}
+
+/* ===============================
+   TRANSITIONS
+   =============================== */
+.aig-grid.fade {
+    opacity: 1;
+}
+.aig-grid.fade.switching {
+    opacity: 0;
+}
+
+.aig-grid.swap {
+    transform: translateX(0);
+}
+.aig-grid.swap.switching {
+    transform: translateX(20px);
+}
+
+.aig-grid.instant {
+    transition: none !important;
+}
+
+/* ===============================
+   MOBILE RESPONSIVENESS
+   =============================== */
+@media (max-width: 600px) {
+    .aig-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .aig-cell {
+        min-height: 110px; /* slightly smaller but still safe */
+    }
+
+    .aig-cell img {
+        width: 56px;
+        height: 56px;
+    }
+}
