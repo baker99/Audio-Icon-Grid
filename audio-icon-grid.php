@@ -1,17 +1,15 @@
 <?php
 /*
- Plugin Name:       Audio Icon Grid
- Description:       Configurable audio grids with sub-grids and transitions. Shortcode: [audio_icon_grid]
- Version :          1.0.1
- Author:            Daniel Baker
- Author URI:        https://daniel-baker.photography/
- License:           GPLv3
- License URI:       https://gnu.org
- Copyright (C) 2026 Daniel Baker (https://daniel-baker.photography/)
- This program is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
- */
+Plugin Name: Audio Icon Grid
+Description: Configurable audio grids with sub-grids and transitions. Shortcode: [audio_icon_grid]
+Version: 1.0.1
+Author: Daniel Baker
+Author URI: https://daniel-baker.photography/
+License: GPLv3
+License URI: https://gnu.org
+Copyright (C) 2026 Daniel Baker
+*/
+
 
 add_filter('the_content', function($content) {
     return do_shortcode($content);
